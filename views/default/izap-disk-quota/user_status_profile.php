@@ -13,6 +13,9 @@
 * Follow us on http://facebook.com/PluginLotto and http://twitter.com/PluginLotto
  */
 
+if($vars['size'] == 'small') {
+  return '';
+}
 $vars['entity'];
 if(!elgg_is_logged_in() || !elgg_is_admin_logged_in() && elgg_get_logged_in_user_guid() != $vars['entity']->guid) {
 
