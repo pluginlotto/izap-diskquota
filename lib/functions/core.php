@@ -14,26 +14,36 @@
  */
 
 function func_izap_diskquota_increment($event, $object_type, $object) {
-    // subtypes to skip
-    $array = array('plugin');
-    if(in_array($object->getSubtype(), $array)) {
-        return TRUE;
-    }
+  // Final check for the right object
+  if(!method_exists($object, 'getOwnerEntity')) {
+    return TRUE;
+  }
+  
+  // subtypes to skip
+  $array = array('plugin');
+  if(in_array($object->getSubtype(), $array)) {
+    return TRUE;
+  }
 
-    $izap_disk_quota = new IzapDiskQuota($object->getOwnerEntity());
-    $return = $izap_disk_quota->validate();
-    if(!$return) {
-        register_error(elgg_echo('izap-diskquota:limt_up'));
-    }
+  $izap_disk_quota = new IzapDiskQuota($object->getOwnerEntity());
+  $return = $izap_disk_quota->validate();
+  if(!$return) {
+    register_error(elgg_echo('izap-diskquota:limt_up'));
+  }
 
-    // save file size if any with this object
-    if($return) {
-        $object->izap_diskspace_used = $izap_disk_quota->getCurrentUploadSize();
-    }
-    return $return;
+  // save file size if any with this object
+  if($return) {
+    $object->izap_diskspace_used = $izap_disk_quota->getCurrentUploadSize();
+  }
+  return $return;
 }
 
 function func_izap_diskquota_decrement($event, $object_type, $object) {
-    $izap_disk_quota = new IzapDiskQuota($object->getOwnerEntity());
-    $izap_disk_quota->releaseSpace($object);
+  // Final check for the right object
+  if(!method_exists($object, 'getOwnerEntity')) {
+    return TRUE;
+  }
+  
+  $izap_disk_quota = new IzapDiskQuota($object->getOwnerEntity());
+  $izap_disk_quota->releaseSpace($object);
 }

@@ -56,7 +56,11 @@ return array(
                         ),
 
                         'delete' => array(
-                                'all' => array(
+                                'object' => array(
+                                        'func_izap_diskquota_decrement',
+                                ),
+
+                                'group' => array(
                                         'func_izap_diskquota_decrement',
                                 ),
                         ),
