@@ -12,7 +12,7 @@
 * For discussion about corresponding plugins, visit http://www.pluginlotto.com/pg/forums/
 * Follow us on http://facebook.com/PluginLotto and http://twitter.com/PluginLotto
  */
-if(!isadminloggedin() && get_loggedin_userid() != $vars['entity']->guid) {
+if(!isloggedin() || !isadminloggedin() && get_loggedin_userid() != $vars['entity']->guid) {
   return '';
 }
 $izap_diskspace = new IzapDiskQuota($vars['entity']);
