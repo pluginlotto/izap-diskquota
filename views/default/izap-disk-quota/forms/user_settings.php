@@ -13,7 +13,7 @@
 * Follow us on http://facebook.com/PluginLotto and http://twitter.com/PluginLotto
  */
 
-   if(elgg_get_context() !=='profile')
+   if(elgg_get_context() !=='profile'||$vars['size']=='small')
        return '';
    
 if(!elgg_is_admin_logged_in()) {
