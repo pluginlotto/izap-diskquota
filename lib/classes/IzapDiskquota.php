@@ -32,7 +32,7 @@ class IzapDiskQuota {
     $this->total_size_used = (int)$this->current_user->izap_disk_used;
 
     // check the maximun space for the user
-    $user_diskquota = $this->current_user->izap_disk_quota;
+    $user_diskquota = mb2b($this->current_user->izap_disk_quota);
     if($user_diskquota) {
       $this->max_allowed_space = $user_diskquota;
     }else { // else allow the global_spage
