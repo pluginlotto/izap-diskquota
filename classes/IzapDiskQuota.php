@@ -32,7 +32,7 @@ class IzapDiskQuota {
     $this->total_size_used = (int)$this->current_user->izap_disk_used;
 
     // check the maximun space for the user
-    $user_diskquota = mb2b($this->current_user->izap_disk_quota);
+    $user_diskquota = IzapBase::mb2byte($this->current_user->izap_disk_quota);
     if($user_diskquota) {
       $this->max_allowed_space = $user_diskquota;
     }else { // else allow the global_spage
@@ -43,7 +43,7 @@ class IzapDiskQuota {
       ));
 
       if((int) $global_max_allowed_space) {
-        $this->max_allowed_space = mb2b($global_max_allowed_space);
+        $this->max_allowed_space = IzapBase::mb2byte($global_max_allowed_space);
       }
     }
 
@@ -115,14 +115,14 @@ class IzapDiskQuota {
   public function getUserDiskquotaInMB() {
     $space = (float) $this->current_user->izap_disk_quota;
     if(!$space) {
-      $space = (float) b2mb($this->max_allowed_space);
+      $space = (float) IzapBase::byteToMb($this->max_allowed_space);
     }
 
     return $space;
   }
 
   public function getUserDiskquotaInB() {
-    $space =  (float) mb2b($this->current_user->izap_disk_quota);
+    $space =  (float) IzapBase::mb2byte($this->current_user->izap_disk_quota);
     if(!$space) {
       $space = (float) $this->max_allowed_space;
     }
@@ -131,7 +131,7 @@ class IzapDiskQuota {
   }
 
   public function getUserUsedSpaceInMB() {
-    return (float) round(b2mb($this->current_user->izap_disk_used), 2);
+    return (float) round(IzapBase::byteToMb($this->current_user->izap_disk_used), 2);
   }
 
   public function getUserUsedSpaceInB() {
@@ -151,12 +151,4 @@ class IzapDiskQuota {
       $this->current_user->izap_disk_used = $this->current_user->izap_disk_used - $space_used;
     }
   }
-}
-
-function mb2b($mb) {
-  return 1024*1024*$mb;
-}
-
-function b2mb($b) {
-  return $b/(1024*1024);
 }

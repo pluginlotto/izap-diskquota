@@ -30,7 +30,6 @@
         <priority>after</priority>
     </requires>
 
-<on_activate>func_diskquota_on_acivation</on_activate>
     <category>iz</category>
     <admin_interface>advanced</admin_interface>
     

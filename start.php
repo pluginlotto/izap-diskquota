@@ -28,11 +28,11 @@ function func_disk_quota_init() {
    
 }
 
-function func_diskquota_on_acivation() {
-    return true;
-    global $CONFIG;
-    forward($CONFIG->wwwroot . '/pg/admin/plugin_settings/' . GLOBAL_IZAP_DISKQUOTA_PLUGIN);
-}
+//function func_diskquota_on_acivation() {
+//    return true;
+//    global $CONFIG;
+//    forward($CONFIG->wwwroot . '/pg/admin/plugin_settings/' . GLOBAL_IZAP_DISKQUOTA_PLUGIN);
+//}
 
 
 function func_izap_diskquota_increment($event, $object_type, $object) {
