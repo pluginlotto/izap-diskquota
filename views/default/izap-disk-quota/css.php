@@ -12,16 +12,21 @@
 * For discussion about corresponding plugins, visit http://www.pluginlotto.com/pg/forums/
 * Follow us on http://facebook.com/PluginLotto and http://twitter.com/PluginLotto
 */
+?>
+.izap_diskspace_user_status {
+font-size:0.8em;
+}
 
-define('GLOBAL_IZAP_DISKQUOTA_PLUGIN', 'izap-disk-quota');
-define('GLOBAL_IZAP_DISKQUOTA_PAGEHANDLER', 'diskquota');
-define('GLOBAL_IZAP_DISKQUOTA_ACTIONHANDLER', 'izap_diskquota');
+.izap_diskspace_user_status .outer_wrapper{
+-moz-border-radius:5px;
+-webkit-border-radius:5px;
+border-radius:5px;
+padding:2px;
+background-color:#FFFFFF;
+width: 100%;
+}
 
-function izap_diskquota_init() {
-  if(is_plugin_enabled('izap-elgg-bridge')){
-    func_init_plugin_byizap(array('plugin' => array('name' => GLOBAL_IZAP_DISKQUOTA_PLUGIN)));
-  }else{
-    register_error('This Plugin Needs "izap-elgg-bridge" Plugin');
-    disable_plugin(GLOBAL_IZAP_DISKQUOTA_PLUGIN);
-  }
-}register_elgg_event_handler('init', 'system', 'izap_diskquota_init');
+.izap_diskspace_user_status .inner_wrapper{
+background-color:#2F53B4;
+height: 5px;
+}

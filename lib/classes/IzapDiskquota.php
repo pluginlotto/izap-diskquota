@@ -14,7 +14,7 @@
  */
 
 class IzapDiskQuota {
-  private $max_allowed_space = 10737418240; // Default: 10 GB //
+  private $max_allowed_space = 1073741824; // Default: 1 GB //
   private $current_user = FALSE;
   private $current_upload_size = 0;
   private $total_size_used = 0;
@@ -32,13 +32,14 @@ class IzapDiskQuota {
     $this->total_size_used = (int)$this->current_user->izap_disk_used;
 
     // check the maximun space for the user
-    $user_diskquota = $this->getUserDiskquotaInB();
+    $user_diskquota = $this->current_user->izap_disk_quota;
     if($user_diskquota) {
       $this->max_allowed_space = $user_diskquota;
     }else { // else allow the global_spage
       $global_max_allowed_space = izap_plugin_settings(array(
               'plugin_name' => GLOBAL_IZAP_DISKQUOTA_PLUGIN,
               'setting_name' => 'izap_allowed_diskspace',
+              'value' => 1024,
       ));
       
       if((int) $global_max_allowed_space) {
@@ -102,7 +103,7 @@ class IzapDiskQuota {
       return FALSE;
     }
 
-    if($this->total_size_used >= $this->max_allowed_space) {
+    if(($this->total_size_used + $this->current_upload_size) > $this->max_allowed_space) {
       return FALSE;
     }
 
@@ -111,11 +112,21 @@ class IzapDiskQuota {
   }
 
   public function getUserDiskquotaInMB() {
-    return (float) $this->current_user->izap_disk_quota;
+    $space = (float) $this->current_user->izap_disk_quota;
+    if(!$space) {
+      $space = (float) b2mb($this->max_allowed_space);
+    }
+
+    return $space;
   }
   
   public function getUserDiskquotaInB() {
-    return (float) mb2b($this->current_user->izap_disk_quota);
+    $space =  (float) mb2b($this->current_user->izap_disk_quota);
+    if(!$space) {
+      $space = (float) $this->max_allowed_space;
+    }
+
+    return $space;
   }
 
   public function getUserUsedSpaceInMB() {
@@ -132,16 +143,13 @@ class IzapDiskQuota {
 
     return (float) round(($total_used / $allowed_space) * 100, 2);
   }
-  
-//
-//  public static function getUserUsedSpaceInPercent($user) {
-//    $space = self::getUserUsedSpace($user);
-//    if($space) {
-//      return b2mb($user->total_size_used);
-//    }
-//
-//    return 0;
-//  }
+
+  public function releaseSpace(ElggEntity $entity) {
+    $space_used = (int)$entity->izap_diskspace_used;
+    if($space_used) {
+      $this->current_user->izap_disk_used = $this->current_user->izap_disk_used - $space_used;
+    }
+  }
 }
 
 function mb2b($mb) {

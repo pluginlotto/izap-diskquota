@@ -24,4 +24,7 @@ add_translation('en', array(
 
   'izap-diskquota:space_allocated_successfully' => 'Space allocated successfully',
   'izap-diskquota:limt_up' => 'Current upload is not allowed, because your upload limit has been finished.',
+
+  'izap-diskquota:diskstatus' => 'Disk usage:',
+  'izap-diskquota:of' => 'of',
 ));

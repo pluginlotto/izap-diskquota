@@ -67,7 +67,16 @@ return array(
                                 $PLUGIN_NAME . '/forms/user_settings' => array(
                                         'priority' => 1,
                                 ),
+
+                                $PLUGIN_NAME . '/user_status_profile' => array(
+                                        'priority' => 1,
+                                ),
                         ),
+
+                        'owner_block/extend' => array(
+                                $PLUGIN_NAME . '/user_status_sidebar' => array(
+                                ),
+                          ),
                 ),
 
                 'submenu' => array(

@@ -14,6 +14,12 @@
  */
 
 function func_izap_diskquota_increment($event, $object_type, $object) {
+  // subtypes to skip
+  $array = array('plugin');
+  if(in_array($object->getSubtype(), $array)) {
+    return TRUE;
+  }
+  
   $izap_disk_quota = new IzapDiskQuota();
   $return = $izap_disk_quota->validate();
   if(!$return) {
@@ -21,6 +27,11 @@ function func_izap_diskquota_increment($event, $object_type, $object) {
   }
 
   // save file size if any with this object
-  $object = $izap_disk_quota->getCurrentUploadSize();
+  $object->izap_diskspace_used = $izap_disk_quota->getCurrentUploadSize();
   return $return;
+}
+
+function func_izap_diskquota_decrement($event, $object_type, $object) {
+  $izap_disk_quota = new IzapDiskQuota();
+  $izap_disk_quota->releaseSpace($object);
 }
