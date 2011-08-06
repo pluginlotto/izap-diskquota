@@ -18,6 +18,7 @@ function func_disk_quota_init() {
 
     elgg_register_event_handler('create', 'object', 'func_izap_diskquota_increment');
     elgg_register_event_handler('create', 'group', 'func_izap_diskquota_increment');
+    elgg_register_event_handler('update', 'object', 'func_izap_diskquota_decrement');
     elgg_register_event_handler('update', 'object', 'func_izap_diskquota_increment');
     elgg_register_event_handler('update', 'group', 'func_izap_diskquota_increment');
     elgg_register_event_handler('delete', 'object', 'func_izap_diskquota_decrement');
