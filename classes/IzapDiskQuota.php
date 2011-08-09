@@ -52,7 +52,7 @@ class IzapDiskQuota {
   }
 
   public function calculateCurrentUpload() {
-    if(sizeof($_FILES)) {
+    if(sizeof($_FILES)) {    
       $total = 0;
       
       foreach($_FILES as $name => $values) {
