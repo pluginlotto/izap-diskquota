@@ -9,7 +9,7 @@
     <author>iZAP team</author>
     <copyright>(C) iZAP web solutions</copyright>
     <license> GNU Public License version 2.0</license>
-    <website> http://www.pluginlutto.com/pg/store</website>
+    <website> http://www.pluginlutto.com/store</website>
 
     <requires>
         <type>elgg_version</type>

@@ -27,14 +27,14 @@ ob_start();
   <?php echo elgg_echo('izap-diskquota:add_space_limit')?>
   <br />
   <?php echo elgg_view('input/text', array(
-  'internalname' => 'space',
+  'name' => 'space',
   'value' => $izap_diskspace->getUserDiskquotaInMB(),
   ));?>
 </label>
 <?php
 echo elgg_view('input/hidden', array(
 'value' => $user->guid,
-'internalname' => 'user_guid',
+'name' => 'user_guid',
 ));
 $form = ob_get_clean();
 $form = elgg_view('input/form', array(
