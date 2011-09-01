@@ -19,7 +19,7 @@
     <?php echo elgg_echo('izap-diskquota:max_allowed_space_per_user');?>
     <br />
     <?php echo elgg_view('input/text', array(
-    'internalname' => 'params[izap_allowed_diskspace]',
+    'name' => 'params[izap_allowed_diskspace]',
     'value' => IzapBase::pluginSetting(array(
         'name' => 'izap_allowed_diskspace',
         'plugin' => GLOBAL_IZAP_DISKQUOTA_PLUGIN,
