@@ -30,7 +30,7 @@ $izap_diskspace = new IzapDiskQuota(get_loggedin_user());
     echo elgg_echo('izap-diskquota:of') . ' ';
     echo $izap_diskspace->getUserDiskquotaInMB() . 'Mb';
     ?>
-    <div class="inner_wrapper" style="width:<?php echo ($percent > 100) ? 100 : $percent?>%;<?php echo ($percent > 80) ? 'background-color:#D70303;' : ''?>">
+    <div class="inner_wrapper" style="width:<?php echo ($percent > 100) ? 100 : $percent?>%;<?php echo ($percent > 80) ? 'background-color:#D70303;' : ''?> ;">
     </div>
   </div>
 </div>

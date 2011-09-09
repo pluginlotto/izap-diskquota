@@ -26,7 +26,7 @@ function func_disk_quota_init() {
    
    elgg_extend_view('icon/user/default', GLOBAL_IZAP_DISKQUOTA_PLUGIN.'/forms/user_settings');
    elgg_extend_view('icon/user/default', GLOBAL_IZAP_DISKQUOTA_PLUGIN.'/user_status_profile');
-   
+   elgg_extend_view('page/elements/sidebar',GLOBAL_IZAP_DISKQUOTA_PLUGIN.'/user_status_sidebar');
 }
 
 //function func_diskquota_on_acivation() {
