@@ -15,7 +15,7 @@
 if(!elgg_is_logged_in() || !elgg_is_admin_logged_in() && elgg_get_logged_in_user_guid() != elgg_get_page_owner_guid()) {
   return '';
 }
-$izap_diskspace = new IzapDiskQuota(get_loggedin_user());
+$izap_diskspace = new IzapDiskQuota(elgg_get_logged_in_user_entity());
 ?>
 <div class="izap_diskspace_user_status">
   <div class="outer_wrapper">
