@@ -13,7 +13,13 @@ elgg_register_event_handler('init', 'system', 'func_disk_quota_init');
 
 function func_disk_quota_init() {
     global $CONFIG;
+    if (elgg_is_active_plugin(GLOBAL_IZAP_ELGG_BRIDGE)) {
     izap_plugin_init(GLOBAL_IZAP_DISKQUOTA_PLUGIN);
+  } else {
+    register_error('This plugin needs izap-elgg-bridge');
+    disable_plugin(GLOBAL_IZAP_CONTEST_PLUGIN);
+  }
+    
     elgg_register_page_handler(GLOBAL_IZAP_ANTISPAM_PAGEHANDLER, GLOBAL_IZAP_PAGEHANDLER);
 
     elgg_register_event_handler('create', 'object', 'func_izap_diskquota_increment');
