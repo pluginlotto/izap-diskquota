@@ -12,7 +12,7 @@
 * For discussion about corresponding plugins, visit http://www.pluginlotto.com/pg/forums/
 * Follow us on http://facebook.com/PluginLotto and http://twitter.com/PluginLotto
  */
-if(!elgg_is_logged_in() || !elgg_is_admin_logged_in() && elgg_get_logged_in_user_guid() != elgg_get_page_owner_guid()) {
+if(!elgg_is_logged_in() && elgg_get_logged_in_user_guid() != elgg_get_page_owner_guid()) {
   return '';
 }
 $izap_diskspace = new IzapDiskQuota(elgg_get_logged_in_user_entity());
