@@ -24,7 +24,7 @@ class IzapDiskQuota {
     // set the user
     if($user instanceof ElggUser) {
       $this->current_user = $user;
-    }else if(isloggedin()) {
+    }else if(elgg_is_logged_in()) {
       $this->current_user = elgg_get_logged_in_user_entity();
     }
 
