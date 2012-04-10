@@ -8,7 +8,7 @@
   <blurb> limits the user from unlimited usage</blurb>
   <author>iZAP team</author>
   <copyright>(C) iZAP web solutions</copyright>
-  <license> GNU Public License version 2.0</license>  
+  <license> GNU Public License version 3</license>  
   <website> http://www.pluginlutto.com/store</website>
 
   <requires>
@@ -30,6 +30,21 @@
     <priority>after</priority>
   </requires>
 
+  <screenshot>
+    <description>iZAP Disk Quota</description>
+    <path>_graphics/disk_quota.png</path>
+  </screenshot>
+  
+  <screenshot>
+    <description>Disk Quota Status</description>
+    <path>_graphics/disk_quota_setting.png</path>
+  </screenshot>
+  
+  <screenshot>
+    <description>iZAP Disk Quota Setting</description>
+    <path>_graphics/remaining_disk_qouta.png</path>
+  </screenshot>
+    
   <category>iz</category>
   <admin_interface>advanced</admin_interface>
     
