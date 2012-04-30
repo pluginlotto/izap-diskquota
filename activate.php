@@ -17,6 +17,6 @@
 IzapBase::pluginSetting(array(
     'name' => 'izap_allowed_diskspace',
     'plugin' => GLOBAL_IZAP_DISKQUOTA_PLUGIN,
-    'value' => 3196,
+    'value' => 5,
     'override' => True
 ));
