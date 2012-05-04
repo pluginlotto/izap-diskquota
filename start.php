@@ -72,6 +72,11 @@ function func_izap_diskquota_increment($event, $object_type, $object) {
   if (in_array($object->getSubtype(), $array)) {
     return True;
   }
+  
+  $tidypics_class = array('TidypicsImage');
+  if(in_array(get_class($object), $tidypics_class)) {
+    return TRUE;
+  }
 
   // disk quota used space increased 
   $izap_disk_quota = new IzapDiskQuota($object->getOwnerEntity());

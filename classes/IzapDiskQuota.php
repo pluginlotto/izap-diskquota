@@ -41,7 +41,7 @@ class IzapDiskQuota {
     $user_diskquota = IzapBase::mb2byte($this->current_user->izap_disk_quota);
     if ($user_diskquota) {
       $this->max_allowed_space = $user_diskquota;
-    } else { // else allow the global_spage
+    } else { // else allow the global_space
       $global_max_allowed_space = IzapBase::pluginSetting(array(
                   'plugin' => GLOBAL_IZAP_DISKQUOTA_PLUGIN,
                   'name' => 'izap_allowed_diskspace',
