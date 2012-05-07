@@ -83,6 +83,7 @@ function func_izap_diskquota_increment($event, $object_type, $object) {
   $return = $izap_disk_quota->validate();
   if (!$return) {
     register_error(elgg_echo('izap-diskquota:limt_up'));
+    forward(REFERER);
   }
 
   // save file size if any with this object
