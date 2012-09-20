@@ -14,7 +14,7 @@
  */
 
 //sets the default value of disk space on plugin activation
-IzapBase::pluginSetting(array(
+ IzapBase::pluginSetting(array(
     'name' => 'izap_allowed_diskspace',
     'plugin' => GLOBAL_IZAP_DISKQUOTA_PLUGIN,
     'value' => 5,
